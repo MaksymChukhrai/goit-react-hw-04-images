@@ -27,20 +27,18 @@ const App = () => {
         }));
 
         setImages(prevImages => [...prevImages, ...newImages]);
-        // setIsLoading(false);
         setError(null);
       })
       .catch(error => {
-        // setIsLoading(false);
         setError(error.message);
       })
-      .finally(() =>{
+      .finally(() => {
         setIsLoading(false);
       });
   }, [searchQuery, page]);
 
   useEffect(() => {
-    if(!searchQuery) return;   // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (!searchQuery) return;
     fetchImages();
   }, [searchQuery, fetchImages]);
 
@@ -70,7 +68,10 @@ const App = () => {
       <ImageGallery images={images} onImageClick={handleOpenModal} />
       {isLoading && <Loader />}
       {!isLoading && images.length > 0 && (
-        <Button onLoadMoreClick={handleLoadMore} hasImages={images.length > 0} />
+        <Button
+          onLoadMoreClick={handleLoadMore}
+          hasImages={images.length > 0}
+        />
       )}
       {showModal && (
         <Modal imageUrl={selectedImage} onClose={handleCloseModal} />
