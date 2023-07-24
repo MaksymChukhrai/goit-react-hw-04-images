@@ -33,13 +33,16 @@ const App = () => {
       .catch(error => {
         // setIsLoading(false);
         setError(error.message);
+      })
+      .finally(() =>{
+        setIsLoading(false);
       });
   }, [searchQuery, page]);
 
   useEffect(() => {
     if(!searchQuery) return;   // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchImages();
-  }, [fetchImages]);
+  }, [searchQuery, fetchImages]);
 
   const handleSearchSubmit = query => {
     setImages([]);
