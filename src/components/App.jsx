@@ -27,11 +27,11 @@ const App = () => {
         }));
 
         setImages(prevImages => [...prevImages, ...newImages]);
-        setIsLoading(false);
+        // setIsLoading(false);
         setError(null);
       })
       .catch(error => {
-        setIsLoading(false);
+        // setIsLoading(false);
         setError(error.message);
       });
   }, [searchQuery, page]);
